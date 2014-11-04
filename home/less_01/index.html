@@ -42,52 +42,63 @@
          if(a == 5) break;
          }
          alert(a);
-         }
+         }*/
 
 
-         var b = 40;
-         do {
-         b--;
+        var b = 40;
+        do {
+            b--;
 
-         if(b % 10 == 0) {
-         continue;
-         } else {
-         if(b == 11) break;
-         }
-         alert(b);
+            if (b % 10 == 0) {
+                continue;
+            } else if (b == 11) {
+                break;
+            }
 
-         } while(b > 10);*/
+            document.write(b + '<br>');
+
+        } while (b > 10);
 
 
         // Calculator
 
-        var a = prompt('Please enter first number', '');
-        var b = prompt('Please, choose an action', '+, -, *, /');
-        var c = prompt('Please, enter second number ');
-        switch (b){
-            case '+':
-                alert(a + c);
+       /* while(true) {
+            var a = parseFloat(prompt('Please enter first number', ''));
+            var b = prompt('Please, choose an action', '+, -, *, /');
+            var c = parseFloat(prompt('Please, enter second number '));
+
+            switch (b){
+                case '+':
+                    alert(a + c);
+                    break;
+                case '-':
+                    alert(a - c);
+                    break;
+                case '*':
+                    alert(a * c);
+                    break;
+                case '/':
+                    if(c == 0) {
+                        alert('you can not divide by zero!');
+                    } else {
+                        alert(a / c);
+                    }
+                    break;
+                default:
+                    alert('something wrong');
+            }
+
+            if(!confirm('Continue?')) {
                 break;
-            case '-':
-                alert(a - c);
-                break;
-            case '*':
-                alert(a * c);
-                break;
-            case '/':
-                if(c == 0) {
-                    alert('you can not divide by zero!');
-                } else {
-                    alert(a / c);
-                }
-                break;
-            default:
-                alert('something wrong');
-        }
+            }
+        }*/
+
+
+        /* TODO: js eval */
     </script>
 
 
-    //
+
 </head>
 <body>
 

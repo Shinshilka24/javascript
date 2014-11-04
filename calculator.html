@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+
+    <script>
+        (function(){
+
+            function calc(a, b, sign, res){
+
+                switch (sign){
+                    case '+':
+                        res.val = a + b;
+                        break;
+                    case '-':
+                        alert(a - b);
+                        break;
+                    case '*':
+                        alert(a * b);
+                        break;
+                    case '/':
+                        if(b == 0) {
+                            alert('you can not divide by zero!');
+                        } else {
+                            alert(a / b);
+                        }
+                        break;
+                    default:
+                        alert('something wrong');
+                }
+            }
+
+            while(true) {
+                var a = parseFloat(prompt('Please enter first number', ''));
+                var b = prompt('Please, choose an action', '+, -, *, /');
+                var c = parseFloat(prompt('Please, enter second number '));
+
+                calc(a, c, b, result);
+
+                if(!confirm('Continue?')) {
+                    break;
+                }
+            }
+        })();
+
+        /* TODO:  */
+    </script>
+</head>
+<body>
+
+</body>
+</html>
