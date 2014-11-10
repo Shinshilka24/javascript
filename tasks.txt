@@ -1,0 +1,4 @@
+06.11.2014:
+1. Калькулятор с кнопками
+2. Изучить exceptions - http://www.javascriptkit.com/javatutors/trycatch2.shtml
+3. В калькуляторе вместо return с ошибкой использовать exceptions

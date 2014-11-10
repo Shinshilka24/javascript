@@ -5,7 +5,7 @@
     <title>Calculator</title>
 
     <script>
-        (function(){
+        /*(function(){
 
             function calc(a, b, sign, res){
 
@@ -42,9 +42,62 @@
                     break;
                 }
             }
+        })();*/
+
+        (function(){
+
+            function calc(a, b, sign){
+
+                    switch (sign){
+                        case '+':
+                            alert(a + b);
+                            break;
+                        case '-':
+                            alert(a - b);
+                            break;
+                        case '*':
+                            alert(a * b);
+                            break;
+                        case '/':
+                            if(b == 0) {
+                                alert('you can not divide by zero!');
+                            } else {
+                                alert(a / b);
+                            }
+                            break;
+                        default:
+                            alert('something wrong');
+                    }
+            }
+
+            function calc_eval(a, b, sign){
+
+                if(sign !== '+' && sign !== '-' && sign !== '/' && sign !== '*') {
+                    return 'something wrong';
+                }
+
+                if(sign === '/' && b == 0) {
+                    return 'you can not divide by zero';
+                }
+
+                return eval(a + sign + b);
+            }
+
+            while(true) {
+                var a = parseFloat(prompt('Please enter first number'));
+                var b = prompt('Please, choose an action', '+, -, *, /');
+                var c = parseFloat(prompt('Please, enter second number'));
+
+                var result = calc_eval(a, c, b);
+
+                alert(result);
+
+                if(!confirm('Continue?')) {
+                    break;
+                }
+            }
         })();
 
-        /* TODO:  */
     </script>
 </head>
 <body>
