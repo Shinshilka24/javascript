@@ -4,77 +4,75 @@
     <meta charset="UTF-8">
     <title>Calculator</title>
 
+
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="a" class="first-number">
+        <input type="text" id="sign" class="sign">
+        <input type="text" id="b" class="second-number">
+        <input type="button" class="btn" id="calc_btn" value="Calc">
+    </div>
+    <p class="result">Result: <input type="text" id="result" readonly value=""></p>
+
     <script>
 
         (function(){
 
             function calc(a, b, sign){
 
-                    switch (sign){
-                        case '+':
-                            alert(a + b);
-                            break;
-                        case '-':
-                            alert(a - b);
-                            break;
-                        case '*':
-                            alert(a * b);
-                            break;
-                        case '/':
-                            if(b == 0) {
-                                alert('you can not divide by zero!');
-                            } else {
-                                alert(a / b);
-                            }
-                            break;
-                        default:
-                            alert('something wrong');
-                    }
+                switch (sign){
+                    case '+':
+                        alert(a + b);
+                        break;
+                    case '-':
+                        alert(a - b);
+                        break;
+                    case '*':
+                        alert(a * b);
+                        break;
+                    case '/':
+                        if(b == 0) {
+                            alert('you can not divide by zero!');
+                        } else {
+                            alert(a / b);
+                        }
+                        break;
+                    default:
+                        alert('something wrong');
+                }
             }
 
             function calc_eval(a, b, sign){
+                if(sign !== '+' && sign !== '-' && sign !== '/' && sign !== '*') {
+                    throw new Error('Unexpected sign');
+                }
+
+
+                if(sign === '/' && b == 0) {
+                    throw new Error('you can not divide by zero');
+                }
+
+
+                return eval(a + sign + b);
+            }
+
+            document.getElementById('calc_btn').onclick = function () {
+                var a = parseFloat(document.getElementById('a').value);
+                var b = document.getElementById('sign').value;
+                var c = parseFloat(document.getElementById('b').value);
 
                 try {
-
-                    if(sign !== '+' && sign !== '-' && sign !== '/' && sign !== '*')
-                        throw new Error('something wrong');
-
-
-                    if(sign === '/' && b == 0)
-                        throw new Error('you can not divide by zero');
-
-
-                    return eval(a + sign + b);
+                    var result = calc_eval(a, c, b);
+                } catch (err) {
+                    result = err.name + ': ' + err.message;
                 }
-                catch(e) {
-                    alert(e.name + '' + e.message)
-                }
-            }
 
-            while(true) {
-                var a = parseFloat(document.getElementsByClassName('first-number').value);
-                var b = document.getElementsByClassName('sign').value;
-                var c = parseFloat(document.getElementsByClassName('second-number').value);
 
-                var result = calc_eval(a, c, b);
-
-                alert(result);
-
-                if(!confirm('Continue?')) {
-                    break;
-                }
-            }
+                document.getElementById('result').value = result;
+            };
         })();
 
     </script>
-</head>
-<body>
-    <div class="calculator">
-        <input type="text" class="first-number">
-        <input type="text" class="sign">
-        <input type="text" class="second-number">
-        <input type="button" class="btn" onclick="calc_eval()" value="Calc">
-    </div>
-    <p class="result">Result: <input type="text" value=""></p>
 </body>
 </html>
