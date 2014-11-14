@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+
+</head>
+<body>
+<div class="calculator">
+    <input type="text" id="a" class="first-number">
+    <input type="text" id="sign" class="sign" value="*" readonly>
+    <input type="text" id="b" class="second-number">
+    <input type="button" class="btn" id="calc_btn" value="Calc">
+</div>
+<p class="result">Result: <input type="text" id="result" readonly value=""></p>
+
+<script>
+    (function(){
+        document.getElementById('calc_btn').onclick = function () {
+            var a = parseFloat(document.getElementById('a').value);
+            var b = parseFloat(document.getElementById('b').value);
+            var result = 0;
+
+            for(var i = 0; i < b; i++) {
+                result += a;
+            }
+
+            document.getElementById('result').value = result;
+        };
+    })();
+</script>
+</body>
+</html>

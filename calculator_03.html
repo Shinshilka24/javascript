@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+
+
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="a" class="first-number">
+        <input type="text" id="sign" class="sign">
+        <input type="text" id="b" class="second-number">
+        <input type="text" id="sign_02" class="second-number">
+        <input type="text" id="c" class="second-number">
+        <input type="button" class="btn" id="calc_btn" value="Calc">
+    </div>
+    <p class="result">Result: <input type="text" id="result" readonly value=""></p>
+
+    <script>
+
+        (function(){
+
+            function calc_eval(a, b, sign, sign2, c){
+                if (sign !== '+' && sign !== '-' && sign !== '/' && sign !== '*') {
+                    throw new Error('Unexpected sign');
+                }
+
+                if (sign === '/' && b == 0) {
+                    throw new Error('you can not divide by zero');
+                }
+
+                if (sign2 === '' || c === '') {
+                    return eval(a + sign + b);
+                } else {
+                    if (sign2 !== '+' && sign2 !== '-' && sign2 !== '/' && sign2 !== '*') {
+                        throw new Error('Unexpected sign');
+                    }
+
+                    if (sign2 === '/' && c == 0) {
+                        throw new Error('you can not divide by zero');
+                    }
+
+                    return eval(a + sign + b + sign2 + c);
+                }
+            }
+
+            document.getElementById('calc_btn').onclick = function () {
+                var a = parseFloat(document.getElementById('a').value);
+                var b = document.getElementById('sign').value;
+                var c = parseFloat(document.getElementById('b').value);
+                var d = document.getElementById('sign_02').value;
+                var e = parseFloat(document.getElementById('c').value);
+
+                try {
+                    var result = calc_eval(a, c, b, d, e);
+                } catch (err) {
+                    result = err.name + ': ' + err.message;
+                }
+
+
+                document.getElementById('result').value = result;
+            };
+        })();
+
+    </script>
+</body>
+</html>
