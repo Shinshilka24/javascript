@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+
+</head>
+<body>
+<div class="calculator">
+    <input type="text" id="a" class="first-number">
+    <input type="text" id="sign" class="sign" value="в степени" readonly>
+    <input type="text" id="b" class="second-number">
+    <input type="button" class="btn" id="calc_btn" value="Calc">
+</div>
+<p class="result">Result: <input type="text" id="result" readonly value=""></p>
+
+<script>
+    (function(){
+
+        function extent(a, b) {
+            if (b != 1) {
+                return a * extent(a, b - 1);
+            } else {
+                return a;
+            }
+        }
+
+        document.getElementById('calc_btn').onclick = function () {
+            var a = parseFloat(document.getElementById('a').value);
+            var b = parseFloat(document.getElementById('b').value);
+
+            document.getElementById('result').value = extent(a, b);
+        };
+    })();
+</script>
+</body>
+</html>
