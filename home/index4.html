@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+
+</head>
+<body>
+<div class="calculator">
+    <input type="text" id="a" class="first-number">
+    <input type="text" id="sign" class="sign" value="в степени" readonly>
+    <input type="text" id="b" class="second-number">
+    <input type="button" class="btn" id="calc_btn" value="Calc">
+</div>
+<p class="result">Result: <input type="text" id="result" readonly value=""></p>
+
+<script>
+    (function(){
+        'use strict';
+
+        var MegaCalc = function () {
+            var methodsCalled = 0;
+
+            var coolAdd = function (a, b) {
+                return a + b;
+            };
+
+            this.extent = function extent (a, b) { // добавили
+                methodsCalled++;
+                if (b != 1) {
+                    return a * extent(a, b - 1);
+                } else {
+                    return a;
+                }
+            };
+
+            this.add = function (a, b) {
+                methodsCalled++;
+                return coolAdd(a, b);
+            };
+
+            this.getCalledCount = function () {
+                return methodsCalled;
+            };
+        };
+
+
+        var calc = new MegaCalc();
+
+        document.getElementById('calc_btn').onclick = function () {
+            var a = parseFloat(document.getElementById('a').value);
+            var b = parseFloat(document.getElementById('b').value);
+
+            document.getElementById('result').value = calc.add(a, b); // вызвали
+            console.log(calc.getCalledCount());
+        };
+
+
+    })();
+</script>
+</body>
+</html>

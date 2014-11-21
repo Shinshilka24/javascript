@@ -17,23 +17,23 @@
 
 <script>
     (function(){
-        var extent;
+        'use strict';
 
+        var counter = (function () {
+            var counter = 0;
+
+            return function () {
+                counter++;
+                return counter;
+            };
+        })();
 
         document.getElementById('calc_btn').onclick = function () {
-            var a = parseFloat(document.getElementById('a').value);
-            var b = parseFloat(document.getElementById('b').value);
-
-            document.getElementById('result').value = extent(a, b);
+            document.getElementById('result').value = counter();
+            console.log(counter);
         };
 
-        extent = function (a, b) {
-            if (b != 1) {
-                return a * extent(a, b - 1);
-            } else {
-                return a;
-            }
-        };
+
     })();
 </script>
 </body>
